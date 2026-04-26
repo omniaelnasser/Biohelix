@@ -1,0 +1,356 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafdfc; /* Soft medical background */
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1e293b;
+  padding-top: 100px; /* Offset for fixed navbar */
+}
+
+/* HERO SECTION */
+.heroSection {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero3DContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(223, 245, 225, 0.8));
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #1b5e20; /* Darker medical green */
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2e7d32; /* Light green */
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* CONTACT INFO & FORM SECTION */
+.contactWrapper {
+  position: relative;
+  padding: 100px 20px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Subtle background overlay (pharmaceutical themed implicitly) */
+.contactBgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at right top, rgba(224, 242, 241, 0.4), transparent 50%),
+                    radial-gradient(circle at left bottom, rgba(46, 125, 50, 0.05), transparent 50%);
+  z-index: 1;
+}
+
+.contactContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* LEFT: INFO CARD */
+.contactInfoWrapper {
+  flex: 1;
+}
+
+.infoCard {
+  background: linear-gradient(145deg, #2e7d32, #1b5e20);
+  border-radius: 20px;
+  padding: 50px;
+  color: #ffffff;
+  height: 100%;
+  box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
+}
+
+.infoCard h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.infoDescription {
+  font-size: 1.1rem;
+  color: #eaf7ee;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoIcon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+}
+
+.infoTextWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+}
+
+.infoLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #a5d6a7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.infoText {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+/* RIGHT: FORM CARD */
+.contactFormWrapper {
+  flex: 1;
+}
+
+.formCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 50px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.formCard h3 {
+  font-size: 2rem;
+  color: #1b5e20;
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.requiredAstrisk {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1e293b;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+}
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+  color: #94a3b8;
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+}
+
+.errorText {
+  font-size: 0.85rem;
+  color: #ef4444;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.submitBtn {
+  background: #2e7d32;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+}
+
+.btnIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* SUCCESS MESSAGE */
+.successMessage {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.successIconWrapper {
+  width: 80px;
+  height: 80px;
+  background: rgba(46, 125, 50, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.successIcon {
+  width: 40px;
+  height: 40px;
+  color: #2e7d32;
+}
+
+.successMessage h4 {
+  font-size: 1.8rem;
+  color: #1b5e20;
+  margin-bottom: 1rem;
+}
+
+.successMessage p {
+  font-size: 1.1rem;
+  color: #475569;
+}
+
+/* MAP SECTION */
+.mapSection {
+  padding: 0;
+  background: #ffffff;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 500px;
+  background: #e2e8f0;
+}
+
+@media (max-width: 992px) {
+  .contactContainer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .infoCard, .formCard {
+    padding: 30px 20px;
+  }
+  .mapContainer {
+    height: 400px;
+  }
+}

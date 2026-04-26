@@ -1,0 +1,213 @@
+.aboutSection {
+  position: relative;
+  padding: 140px 0;
+  background-color: #f8fafc;
+  min-height: 850px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Cinematic Video/Image Background */
+.videoBackgroundWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%; /* Right 60% of screen */
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Cinematic slow zoom effect */
+  animation: slowZoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.visualOverlay {
+  position: absolute;
+  inset: 0;
+  /* Gradient blending the left interface area smoothly into the visual */
+  background: linear-gradient(
+    to right, 
+    #f8fafc 0%, 
+    rgba(248, 250, 252, 0.9) 15%,
+    rgba(248, 250, 252, 0.2) 60%,
+    rgba(14, 165, 233, 0.05) 100% /* Subtle medical blue tint */
+  );
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+}
+
+.card {
+  max-width: 580px; /* Constraints card to left area */
+  background: #ffffff;
+  padding: 56px;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981; /* Light green */
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  align-self: flex-start;
+}
+
+.title {
+  font-size: 44px;
+  color: #1e293b; /* Dark slate */
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 18px;
+  color: #475569; /* Slate 600 */
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* Features List with Icons */
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.featureItem:hover {
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateX(4px);
+}
+
+.iconWrapper {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(16, 185, 129, 0.1); /* light medical green */
+  color: #10b981;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.2;
+}
+
+.featureText {
+  font-size: 17px;
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .videoBackgroundWrapper {
+    width: 65%;
+  }
+  .visualOverlay {
+    background: linear-gradient(
+      to right, 
+      #f8fafc 0%, 
+      rgba(248, 250, 252, 0.95) 25%,
+      rgba(248, 250, 252, 0.3) 100%
+    );
+  }
+  .card {
+    max-width: 520px;
+    padding: 48px 40px;
+  }
+  .title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: 0;
+    min-height: auto;
+    flex-direction: column;
+  }
+  
+  .container {
+    padding: 80px 24px 40px 24px;
+    order: 1; /* Puts the card first */
+  }
+
+  .videoBackgroundWrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    order: 2; /* Visual stacks below */
+  }
+
+  .visualOverlay {
+    background: linear-gradient(
+      to bottom, 
+      #f8fafc 0%, 
+      rgba(248, 250, 252, 0.1) 40%,
+      transparent 100%
+    );
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 20px 0;
+    border-radius: 0;
+    box-shadow: none; /* Strip out boxing for cleaner mobile integration */
+    border: none;
+    background: transparent;
+  }
+  
+  .featureItem {
+    padding: 14px 16px;
+  }
+}

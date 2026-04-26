@@ -1,0 +1,192 @@
+.facilitySection {
+  position: relative;
+  padding: 120px 24px;
+  background-color: #f8fafc; /* Very light slate background for a clinical look */
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background Image Integration */
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%; /* Image covers the right 75% */
+  height: 100%;
+  z-index: 1;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  /* Optional slight initial zoom for aesthetic */
+  transform: scale(1.02);
+  transition: transform 3s ease-in-out;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  /* Gradient seamlessly blends the image into the #f8fafc background */
+  background: linear-gradient(
+    to right, 
+    #f8fafc 0%, 
+    rgba(248, 250, 252, 0.9) 25%,
+    rgba(248, 250, 252, 0.2) 65%,
+    rgba(16, 185, 129, 0.06) 100% /* Subtle green medical tint on the far right */
+  );
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Floating Card Styles */
+.card {
+  max-width: 580px; /* Constrained width for excellent readability */
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  padding: 64px 56px;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08); /* Soft elevated shadow */
+  border: 1px solid rgba(16, 185, 129, 0.1); /* Subtle green border */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(16, 185, 129, 0.1); /* Light green */
+  color: #10b981; 
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.title {
+  font-size: 44px;
+  color: #1e293b; /* Slate 800 */
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.description {
+  font-size: 18px;
+  color: #475569; /* Slate 600 */
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.discoverBtn {
+  background-color: #10b981; /* Light green primary */
+  color: #ffffff;
+  padding: 18px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.35);
+  border: none;
+  cursor: pointer;
+}
+
+.discoverBtn:hover {
+  background-color: #059669; /* Darker green on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .facilitySection {
+    padding: 100px 24px;
+    min-height: 700px;
+  }
+  .backgroundWrapper {
+    width: 85%;
+  }
+  .backgroundOverlay {
+    background: linear-gradient(
+      to right, 
+      #f8fafc 0%, 
+      rgba(248, 250, 252, 0.95) 30%,
+      rgba(248, 250, 252, 0.3) 100%
+    );
+  }
+  .title {
+    font-size: 38px;
+  }
+  .card {
+    padding: 48px 40px;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facilitySection {
+    padding: 60px 20px;
+    min-height: auto;
+    align-items: flex-end; /* Card stays near bottom */
+  }
+  
+  .backgroundWrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .backgroundImage {
+    object-position: center 20%; /* Show face / main area on mobile top */
+  }
+
+  /* Fade gradient changes to vertical on mobile */
+  .backgroundOverlay {
+    background: linear-gradient(
+      to bottom, 
+      rgba(248, 250, 252, 0.1) 0%, 
+      rgba(248, 250, 252, 0.7) 40%,
+      #f8fafc 80%,
+      #f8fafc 100%
+    );
+  }
+
+  .container {
+    padding-top: 320px; /* Push card down to leave image visible */
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 40px 24px;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(24px);
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+}
