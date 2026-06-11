@@ -171,46 +171,7 @@ const AppointmentPage = () => {
             )}
           </motion.div>
 
-          {/* SUPPORTIVE INFO (SIDE PANEL) */}
-          <motion.div 
-            className={styles.supportPanel}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className={styles.supportCard}>
-              <div className={styles.cardHeader}>
-                <Activity className={styles.headerIcon} />
-                <h3>Expert Availability</h3>
-              </div>
-              <p className={styles.supportDesc}>Our specialists are typically available to review and confirm appointments within 12 business hours.</p>
-              
-              <ul className={styles.supportList}>
-                <li>
-                  <Clock className={styles.listIcon} />
-                  <div>
-                    <strong>Working Hours</strong>
-                    <span>Monday - Friday: 9:00 AM - 6:00 PM (GST)</span>
-                  </div>
-                </li>
-                <li>
-                  <CalendarCheck className={styles.listIcon} />
-                  <div>
-                    <strong>Response Time</strong>
-                    <span>Under 12 business hours</span>
-                  </div>
-                </li>
-                <li>
-                  <Headphones className={styles.listIcon} />
-                  <div>
-                    <strong>Support Team</strong>
-                    <span>Dedicated 24/5 global support desk</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
+
 
         </div>
       </section>

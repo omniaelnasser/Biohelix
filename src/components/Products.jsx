@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Products.module.css';
 import { motion } from 'framer-motion';
-import { Pill, Sparkles, Droplet, Dna } from 'lucide-react';
+import { Pill, Sparkles, Droplet, Dna, ArrowRight } from 'lucide-react';
 
 const productCategories = [
   {
@@ -91,8 +91,8 @@ const Products = () => {
                       <span key={i} className={styles.descLine}>{line}</span>
                     ))}
                   </div>
-                  <Link to={`/solutions/${product.slug}`} className={styles.exploreLink}>
-                    Explore Details <span>→</span>
+                  <Link to={`/services/${product.slug}`} state={{ from: 'home' }} className={styles.readMoreBtn}>
+                    Read More
                   </Link>
                 </div>
               </motion.div>

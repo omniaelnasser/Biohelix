@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Facility.module.css';
 import { motion } from 'framer-motion';
+import { Factory, ArrowRight } from 'lucide-react';
 
 const Facility = () => {
   return (
@@ -25,7 +26,9 @@ const Facility = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className={styles.badge}>Our Infrastructure</div>
+          <div className={styles.badge}>
+            <Factory size={16} style={{ marginRight: '8px' }} /> Our Infrastructure
+          </div>
           <h2 className={styles.title}>Advanced Manufacturing Excellence in UAE</h2>
           <p className={styles.description}>
             Strategically located in Abu Dhabi, our state-of-the-art facility adheres to
@@ -33,7 +36,9 @@ const Facility = () => {
             engineering and equipped with advanced analytical laboratories, we guarantee
             unmatched purity and consistent quality in every batch.
           </p>
-          <button className={styles.discoverBtn}>Discover Our Facility</button>
+          <button className={styles.discoverBtn} style={{ display: 'inline-flex', alignItems: 'center' }}>
+            Discover Our Facility <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+          </button>
         </motion.div>
       </div>
     </section>

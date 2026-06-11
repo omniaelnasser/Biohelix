@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './Stats.module.css';
 import { motion, useInView } from 'framer-motion';
+import { ShieldCheck, Microscope, Globe } from 'lucide-react';
 
 const statsData = [
-  { label: 'Quality Assurance', target: 100, suffix: '%', desc: 'Compliant across standards' },
-  { label: 'R&D Innovation', target: 50, suffix: '+', desc: 'Patented clinical formulas' },
-  { label: 'Global Reach', target: 80, suffix: '+', desc: 'Countries supplying our tech' },
+  { label: 'Quality Assurance', target: 100, suffix: '%', desc: 'Compliant across standards', icon: ShieldCheck },
+  { label: 'R&D Innovation', target: 50, suffix: '+', desc: 'Patented clinical formulas', icon: Microscope },
+  { label: 'Global Reach', target: 80, suffix: '+', desc: 'Countries supplying our tech', icon: Globe },
 ];
 
 const Counter = ({ target }) => {
@@ -57,6 +58,7 @@ const Stats = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.2, duration: 0.5, ease: "easeOut" }}
             >
+
               <div className={styles.numberWrapper}>
                 <Counter target={stat.target} />
                 <span className={styles.suffix}>{stat.suffix}</span>

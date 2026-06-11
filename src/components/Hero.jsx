@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 import Hero3D from './Hero3D';
 import { motion } from 'framer-motion';
+import { Activity, ArrowRight, Info } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -33,7 +34,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <span className={styles.dot}></span>
+            <Activity size={16} className={styles.dotIcon} style={{ marginRight: '8px' }} />
             Factory in UAE
           </motion.div>
           
@@ -62,8 +63,12 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.8 }}
           >
-            <button className={styles.primaryBtn}>Explore Our Products</button>
-            <Link to="/about" className={styles.secondaryBtn}>Learn More</Link>
+            <Link to="/services" className={styles.primaryBtn}>
+              Explore Our Services <ArrowRight size={18} className={styles.arrowIcon} />
+            </Link>
+            <Link to="/about" className={styles.secondaryBtn}>
+              Learn More <ArrowRight size={18} className={styles.arrowIcon} />
+            </Link>
           </motion.div>
         </motion.div>
       </div>

@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronDown, Search, Loader2 } from 'lucide-react';
 import styles from './PhoneInput.module.css';
 
+const FLAG_COMPONENTS = {
+  // Use 100% accurate and scalable SVG icons from flagcdn for ALL countries
+  default: (code) => `https://flagcdn.com/${code.toLowerCase()}.svg`
+};
+
+const getFlagComponent = (code) => null; // Always return null to force the fallback standard SVG image
+
 const COUNTRIES = [
   { name: 'United Arab Emirates', code: 'AE', dial: '+971' },
   { name: 'Saudi Arabia',         code: 'SA', dial: '+966' },
@@ -75,7 +82,13 @@ const COUNTRIES = [
   { name: 'Afghanistan',          code: 'AF', dial: '+93'  },
 ];
 
-const flagUrl = (code) => `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+const getFlagElement = (code, className, size = 24) => {
+  const FlagComponent = getFlagComponent(code);
+  if (FlagComponent) {
+    return <FlagComponent className={className} size={size} />;
+  }
+  return <img src={FLAG_COMPONENTS.default(code)} alt={`${code} flag`} className={className} />;
+};
 
 const PhoneInput = ({ value, onChange, onCountryChange, error, id = 'phone', label = 'Phone Number', defaultCountry = 'AE' }) => {
   const defaultC = COUNTRIES.find(c => c.code === defaultCountry) || COUNTRIES[0];
@@ -202,11 +215,7 @@ const PhoneInput = ({ value, onChange, onCountryChange, error, id = 'phone', lab
             {detecting ? (
               <Loader2 size={18} className={styles.detectingSpinner} />
             ) : (
-              <img
-                src={flagUrl(selectedCountry.code)}
-                alt={`${selectedCountry.name} flag`}
-                className={styles.flagIcon}
-              />
+              getFlagElement(selectedCountry.code, styles.flagIcon)
             )}
             <span className={styles.dialCode}>{selectedCountry.dial}</span>
             <ChevronDown
@@ -244,11 +253,7 @@ const PhoneInput = ({ value, onChange, onCountryChange, error, id = 'phone', lab
                       role="option"
                       aria-selected={country.code === selectedCountry.code}
                     >
-                      <img
-                        src={flagUrl(country.code)}
-                        alt={`${country.name} flag`}
-                        className={styles.flagIconSmall}
-                      />
+                      {getFlagElement(country.code, styles.flagIconSmall)}
                       <span className={styles.countryName}>{country.name}</span>
                       <span className={styles.countryDial}>{country.dial}</span>
                     </li>

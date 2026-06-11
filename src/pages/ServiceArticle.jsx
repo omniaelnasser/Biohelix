@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { articles } from '../data/cmsData';
 import { ArrowLeft, CheckCircle2, FlaskConical, Stethoscope } from 'lucide-react';
-import styles from './SolutionTemplate.module.css';
+import styles from './ServiceArticle.module.css';
 
-const SolutionTemplate = () => {
+const ServiceArticle = () => {
   const { slug } = useParams();
   const article = articles[slug];
+  const location = useLocation();
+
+  const fromHome = location.state?.from === 'home';
+  const backUrl = fromHome ? "/" : "/services";
+  const backText = fromHome ? "Back to Home" : "Back to Services";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,7 +23,7 @@ const SolutionTemplate = () => {
       <div className={styles.notFound}>
         <h2>Article Not Found</h2>
         <p>The pharmaceutical solution you are looking for does not exist.</p>
-        <Link to="/" className={styles.backBtn}>Return Home</Link>
+        <Link to={backUrl} className={styles.backBtn}>Return to {fromHome ? 'Home' : 'Services'}</Link>
       </div>
     );
   }
@@ -29,11 +34,16 @@ const SolutionTemplate = () => {
       {/* HERO SECTION */}
       <section className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
-        {/* Optional background image hook if needed: */}
-        <div 
-          className={styles.heroBgData} 
-          style={{ backgroundImage: `url(${article.heroImage})` }}
-        ></div>
+        <video 
+          className={styles.heroVideo}
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          poster={article.heroImage}
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-medical-science-dna-molecule-animation-22467-large.mp4" type="video/mp4" />
+        </video>
         
         <div className={styles.heroContent}>
           <motion.div
@@ -41,12 +51,14 @@ const SolutionTemplate = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link to="/" className={styles.backLink}>
-              <ArrowLeft size={18} /> Back to Home
+            <Link to={backUrl} className={styles.backLink}>
+              <ArrowLeft size={18} /> {backText}
             </Link>
-            <span className={styles.categoryBadge}>Medical Solutions API</span>
             <h1 className={styles.title}>{article.title}</h1>
             <h2 className={styles.subtitle}>{article.subtitle}</h2>
+            <Link to="/appointment" className={styles.heroCtaBtn}>
+              Get an Appointment &rarr;
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -136,20 +148,20 @@ const SolutionTemplate = () => {
             </div>
           </motion.section>
 
-        </article>
+          {/* BOTTOM CTA */}
+          <section className={styles.bottomCtaSection}>
+            <div className={styles.bottomCtaContent}>
+              <h3>Partner with BioHelix Experts</h3>
+              <p>Our pharmaceutical team is available for global collaboration, research partnerships, and clinical consultation.</p>
+              <Link to="/appointment" className={styles.bottomCtaBtn}>Get an Appointment</Link>
+            </div>
+          </section>
 
-        {/* SIDE BAR / CTA */}
-        <aside className={styles.articleSidebar}>
-          <div className={styles.sidebarCard}>
-            <h3>Ready to Collaborate?</h3>
-            <p>Our pharmaceutical specialists are available for clinical consultations and international partnership inquiries.</p>
-            <Link to="/appointment" className={styles.sidebarBtn}>Get an Appointment</Link>
-          </div>
-        </aside>
+        </article>
       </div>
 
     </div>
   );
 };
 
-export default SolutionTemplate;
+export default ServiceArticle;

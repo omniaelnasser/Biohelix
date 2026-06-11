@@ -175,6 +175,35 @@
   line-height: 1.4;
 }
 
+.emailLink {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.emailLink:hover {
+  color: #a5d6a7;
+}
+
+.emailLink::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a5d6a7;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.emailLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 /* RIGHT: FORM CARD */
 .contactFormWrapper {
   flex: 1;

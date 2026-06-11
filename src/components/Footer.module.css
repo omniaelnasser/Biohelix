@@ -1,66 +1,53 @@
 .footer {
-  background-color: var(--bg-primary); /* Transitioned to white */
+  background-color: #ffffff;
   padding: 80px 0 0 0;
-  border-top: 1px solid var(--border-light);
-  color: var(--text-secondary);
+  border-top: 1px solid #e2e8f0;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
 }
 
-.brandSection {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+.footerContent {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 64px;
+}
+
+.brandColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .footerLogoWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.footerLogoWrapper:hover {
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.2));
 }
 
 .footerLogoImg {
-  height: 44px;
+  height: 86px; /* Increased size significantly */
   width: auto;
   object-fit: contain;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
-}
-
-.logo span {
-  color: var(--text-primary);
-}
-
 .description {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: #475569;
 }
 
-.linksSection {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border-light);
-  padding-bottom: 64px;
-}
-
-.column {
+.navColumn, .infoColumn {
   display: flex;
   flex-direction: column;
 }
@@ -68,64 +55,95 @@
 .colTitle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: #1e293b;
   margin-bottom: 24px;
 }
 
 .headerIcon {
   width: 20px;
   height: 20px;
-  color: #2e7d32;
+  color: #10b981;
 }
 
 .linkList {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 .linkList a {
-  color: var(--text-secondary);
-  font-size: 15px;
-  transition: all var(--transition-fast);
+  color: #475569;
+  font-size: 15.5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  width: max-content;
+}
+
+.linkList a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #10b981;
+  transition: width 0.3s ease;
 }
 
 .linkList a:hover {
-  color: var(--primary);
-  padding-left: 4px;
+  color: #10b981;
+  transform: translateX(4px);
+}
+
+.linkList a:hover::after {
+  width: 100%;
+}
+
+.highlightLink {
+  color: #10b981 !important;
+  font-weight: 600 !important;
 }
 
 .infoList {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .infoItem {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.5;
+  color: #475569;
 }
 
 .infoIcon {
-  width: 18px;
-  height: 18px;
-  color: #2e7d32;
+  width: 20px;
+  height: 20px;
+  color: #10b981;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .bottomBar {
-  background-color: var(--text-primary);
-  color: #9CA3AF;
+  background-color: #f8fafc;
+  color: #64748b;
   padding: 24px 0;
+  border-top: 1px solid #e2e8f0;
 }
 
 .bottomContainer {
@@ -134,15 +152,42 @@
   padding: 0 24px;
   text-align: center;
   font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+  }
+  .brandColumn {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 768px) {
-  .linksSection {
+  .footerContent {
     grid-template-columns: 1fr;
+    gap: 48px;
     text-align: center;
+  }
+  
+  .brandColumn {
+    align-items: center;
+  }
+  
+  .colTitle {
+    justify-content: center;
   }
   
   .infoItem {
     justify-content: center;
+  }
+  
+  .linkList a {
+    margin: 0 auto;
+  }
+  
+  .linkList a:hover {
+    transform: none;
   }
 }

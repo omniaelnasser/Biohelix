@@ -48,25 +48,39 @@
   border-color: rgba(16, 185, 129, 0.3);
 }
 
-.quoteIcon {
-  font-family: Georgia, serif;
-  font-size: 80px;
-  color: rgba(16, 185, 129, 0.1);
-  position: absolute;
-  top: 10px;
-  left: 24px;
-  line-height: 1;
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.svgIcon {
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  background: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.card:hover .svgIcon {
+  color: #ffffff;
 }
 
 .quoteText {
-  position: relative;
-  z-index: 2;
   font-size: 16px;
   line-height: 1.7;
   color: var(--text-secondary);
   font-style: italic;
   margin-bottom: 32px;
-  padding-top: 16px;
 }
 
 .authorSection {
@@ -80,10 +94,13 @@
 .avatar {
   width: 48px;
   height: 48px;
-  background-color: var(--primary);
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--primary);
   border-radius: 50%;
-  opacity: 0.15;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .authorName {

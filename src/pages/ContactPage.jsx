@@ -246,8 +246,8 @@ const ContactPage = () => {
                 <div className={styles.infoItem}>
                   <div className={styles.iconBox}><Mail className={styles.infoIcon} /></div>
                   <div className={styles.infoTextWrapper}>
-                    <span className={styles.infoLabel}>Email</span>
-                    <span className={styles.infoText}>contact@biohelix-pharma.com</span>
+                    <span className={styles.infoLabel}>Info</span>
+                    <a href="mailto:info@biohelixpharma.com" className={`${styles.infoText} ${styles.emailLink}`}>info@biohelixpharma.com</a>
                   </div>
                 </div>
 
